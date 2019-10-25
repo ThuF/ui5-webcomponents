@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<ui5-shellbar
+		primary-title="UI5 Web Components"
+		secondary-title="secondary title"
+		notification-count="99+"
+		show-notifications
+		show-product-switch
+		show-co-pilot></ui5-shellbar>
+
+<!-- Header -->
+<div class="header">
+	<span>Products table - resize your browser to make some columns pop-in</span>
+	<button id="toggleSticky" style="height: 32px">Toggle Sticky Column Header</button>
+</div>
+
+<ui5-button id="fetch-btn" style="width: 120px;">Fetch List Data</ui5-button>
+<hr>
+<ui5-busyindicator id="busy-container" style="width: 100%" size="Medium" class="full-width">
+	<ui5-table sticky-column-header="true">
+		<ui5-table-column slot="columns" style="width: 12rem">
+			<span style="line-height: 1.4rem">Product</span>
+		</ui5-table-column>
+		<ui5-table-column slot="columns" min-width="800" popin-text="Supplier" demand-popin>
+			<span style="line-height: 1.4rem">Supplier</span>
+		</ui5-table-column>
+		<ui5-table-column slot="columns" min-width="600" popin-text="Dimensions" demand-popin>
+			<span style="line-height: 1.4rem">Dimensions</span>
+		</ui5-table-column>
+		<ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin>
+			<span style="line-height: 1.4rem">Weight</span>
+		</ui5-table-column>
+		<ui5-table-column slot="columns" min-width="600" popin-text="Weight" demand-popin>
+			<span style="line-height: 1.4rem">Price</span>
+		</ui5-table-column>
+		<ui5-table-row slot="default">
+			<ui5-table-cell>
+				<div class="double-line-content"><span><b>Notebook Basic 17</b></span><span style="margin-top: 0.5rem">HT-1001</span></div>
+			</ui5-table-cell>
+			<ui5-table-cell>
+				<span class="middle">Very Best Screens</span>
+			</ui5-table-cell>
+			<ui5-table-cell>
+				<span class="middle">29 x 17 x 3.1cm</span>
+			</ui5-table-cell>
+			<ui5-table-cell>
+				<span style="color: #2b7c2b" class="middle"><b>4.5</b>KG</span>
+			</ui5-table-cell>
+			<ui5-table-cell last-in-row="" slot="default-5">
+				<span class="middle"><b>1249</b>EUR</span>
+			</ui5-table-cell>
+		</ui5-table-row>
+		<ui5-table-row slot="default-2" _tab-index="-1">
+			<ui5-table-cell>
+				<div class="double-line-content"><span><b>Notebook Basic 17</b></span><span style="margin-top: 0.5rem">HT-1001</span></div>
+			</ui5-table-cell>
+			<ui5-table-cell>
+				<span class="middle">Very Best Screens</span>
+			</ui5-table-cell>
+			<ui5-table-cell>
+				<span class="middle">29 x 17 x 3.1cm</span>
+			</ui5-table-cell>
+			<ui5-table-cell>
+				<span style="color: #2b7c2b" class="middle"><b>4.5</b>KG</span>
+			</ui5-table-cell>
+			<ui5-table-cell last-in-row="" slot="default-5">
+				<span class="middle"><b>1249</b>EUR</span>
+			</ui5-table-cell>
+		</ui5-table-row>
+	</ui5-table>
+</ui5-busyindicator>
+
+<script>
+	const busyIndocator = document.getElementById("busy-container");
+	const list = document.getElementById("fetch-list");
+	
+	document.getElementById("fetch-btn").addEventListener("press", event => {
+		busyIndocator.active = true;
+		
+		setTimeout(() => {
+			const elements = ["UI5", "Web", "Components"].forEach(title => {
+				var row = document.createElement("ui5-table-row");
+				var cell1 = document.createElement("ui5-table-cell");
+				var cell2 = document.createElement("ui5-table-cell");
+				var cell3 = document.createElement("ui5-table-cell");
+				var cell4 = document.createElement("ui5-table-cell");
+				var cell5 = document.createElement("ui5-table-cell");
+//				const el = document.createElement("ui5-li");
+//				el.textContent = title;
+				
+				list.appendChild(el);
+			});
+			
+			list.noDataText = "";
+			busyIndocator.active = false;
+		}, 2000);
+	});
+</script>
+	
+	
+<ui5-switch text-on="On" text-off="Off"></ui5-switch>
+	<div>
+		<ui5-radiobutton id="sap_fiori_3" name="theme" text="Fiori 3" selected></ui5-radiobutton>
+		<ui5-radiobutton id="sap_belize_hcb" name="theme" text="HCB"></ui5-radiobutton>
+		<ui5-radiobutton id="sap_belize" name="theme" text="Belize"></ui5-radiobutton>
+	</div>
+
+	<ui5-title>Hello World</ui5-title>
+
+	<ui5-messagestrip type="Warning">This is a small playground</ui5-messagestrip><br><br>
+
+	<ui5-input show-suggestions value-state="Error">
+		<ui5-li>Australia</ui5-li>
+		<ui5-li>Austria</ui5-li>
+		<ui5-li>Andorra</ui5-li>
+		<ui5-li>Brazil</ui5-li>
+		<ui5-li>Bulgaria</ui5-li>
+		<ui5-li>China</ui5-li>
+		<ui5-li>Denmkar</ui5-li>
+		<ui5-li>England</ui5-li>
+		<ui5-li>Spain</ui5-li>
+	</ui5-input><br><br>
+
+	<ui5-select>
+		<ui5-option>Fiori3</ui5-option>
+		<ui5-option>Belize</ui5-option>
+		<ui5-option>HCB</ui5-option>
+	</ui5-select><br><br>
+
+	<ui5-datepicker></ui5-datepicker><br><br>
+	<ui5-textarea class="textarea-width" placeholder="Type no more than 10 symbols" max-length="10" show-exceeded-text></ui5-textarea><br><br>
+
+	<ui5-multi-combobox style="width: 100%" placeholder="Choose your countries">
+		<ui5-li selected>Argentina</ui5-li>
+		<ui5-li>Bulgaria</ui5-li>
+		<ui5-li>Denmark</ui5-li>
+		<ui5-li>England</ui5-li>
+		<ui5-li>Albania</ui5-li>
+		<ui5-li>Morocco</ui5-li>
+		<ui5-li>Portugal</ui5-li>
+		<ui5-li>Germany</ui5-li>
+		<ui5-li>Philippines</ui5-li>
+		<ui5-li>Paraguay</ui5-li>
+	</ui5-multi-combobox>
+
+	<div style="display: flex; align-items: center;">
+		<ui5-switch graphical></ui5-switch>
+		<ui5-button design="Positive">Agree</ui5-button>
+		<ui5-badge>Pending</ui5-badge>
+		<ui5-link>Open</ui5-link>
+		<ui5-checkbox></ui5-checkbox>
+	</div>
+
+	<ui5-button id="openDialogButton" design="Emphasized">Open Dialog</ui5-button>
+
+<ui5-dialog id="hello-dialog" header-text="Register Form">
+	<section class="login-form">
+		<div>
+			<ui5-label for="username" required>Username: </ui5-label>
+			<ui5-input id="username"></ui5-input>
+		</div>
+
+		<div>
+			<ui5-label for="password" required>Password: </ui5-label>
+			<ui5-input id="password" type="Password" value-state="Error"></ui5-input>
+		</div>
+
+		<div>
+			<ui5-label for="email" type="Email" required>Email: </ui5-label>
+			<ui5-input id="email"></ui5-input>
+		</div>
+
+		<div>
+			<ui5-label for="address">Address: </ui5-label>
+			<ui5-input id="address"></ui5-input>
+		</div>
+	</section>
+
+	<div slot="footer"	class="dialog-footer">
+		<div style="flex: 1;"></div>
+		<ui5-button id="closeDialogButton" design="Emphasized">Register</ui5-button>
+	</div>
+</ui5-dialog>
+
+
+<ui5-list id="myList" class="full-width">
+	<ui5-li icon="sap-icon://nutrition-activity" description="Tropical plant with an edible fruit" info="In-stock" info-state="Success">Pineapple</ui5-li>
+	<ui5-li icon="sap-icon://nutrition-activity" description="Occurs between red and yellow" info="Expires" info-state="Warning">Orange</ui5-li>
+	<ui5-li icon="sap-icon://nutrition-activity" description="The yellow lengthy fruit" info="Re-stock" info-state="Error">Banana</ui5-li>
+	<ui5-li icon="sap-icon://nutrition-activity" description="The tropical stone fruit" info="Re-stock" info-state="Error">Mango</ui5-li>
+</ui5-list>
+		
+
+	<!-- ES6 bundle -->
+	<script src="./dist/bundle.esm.js" type="module"></script>
+	<script>
+		var dialogOpener = document.getElementById("openDialogButton");
+		var dialog = document.getElementById("hello-dialog");
+		var dialogCloser = document.getElementById("closeDialogButton");
+	
+		dialogOpener.addEventListener("press", function() {
+			dialog.open();
+		});
+	
+		dialogCloser.addEventListener("press", function() {
+			dialog.close();
+		});
+	</script>
+</body>
+
+</html>
